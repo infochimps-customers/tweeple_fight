@@ -1,0 +1,64 @@
+
+This is a skeleton "Sinatra":http://www.sinatrarb.com app, with modern underpinnings of "haml":https://github.com/nex3/haml, "compass":https://github.com/chriseppstein/compass, and "HTML5 Boilerplate.":http://html5boilerplate.com/ Crafted with love by the "Infochimps team":http://infochimps.org/ -- if you think building apps with Sinatra is easy, wait til you try building on our "fast, versatile API!":http://infochimps.com/apis
+
+h2. Code Organization
+
+h3. /app
+
+Site code. Within app, please find
+
+* *routes*:     Actions. This is where you define your *get* and *post* routes.
+* *helpers*:    View helpers. A few form helpers are provided; see @app/views/_demo.haml@ for an example
+* *models*:     Domain models. your ActiveMongoSequelMapperDataOnJavaOnRails ODBC frobware ORMs go here.
+* *rack*:       Rack middlewares. A 'heartbeat' middleware is included for monitoring -- it captures a basic "Are You There, App? It's Me, Margaret" route and returns @200 OK@.
+* *views*:      Page templates and partials (start with '_'). The basic page layout has
+  - _html_head_:    html HEAD (title, meta tags, stylesheet links, etc)
+  - _topbar_:       Banner, navigation menu, and "Hi, bob!" logged in/out text
+  - _flashes_:      success/notice/alert flash messages at the top of the page
+  - _footer_:       bottom of page
+  - _javascripts_:  javascripts are loaded last on the page, as they should be.
+* *views/stylesheets*: compass/sass stylesheets based on the HTML5 boilerplate and grid960 systems.
+
+h3. /config
+
+* *main.yaml*:      Site settings, accessible through the global @Settings@ object, using the "configliere gem":http://github.com/infochimps/configliere
+* *bootstrap.rb*:   Uses bundler to freeze your gems into @vendor@ making a production deploy more efficient and predictable. Do _not_ include vendor/ in your git repo.
+
+h3. /lib
+
+Support code.
+
+* *boot.rb*:        Loads the gems and enforces a current @vendor@ directory.
+* *app_main.rb*:    Creates the sinatra app and its required gems. See _components_ below.
+* *app_compass.rb*: Loads and registers the compass library.
+
+h3. /public
+
+Static assets
+
+* *images*:         favicon, app banner, other images
+* *stylesheets*:    stat
+* *javascripts*:
+  - _jquery.min.js_ The app will try to load from Google's CDN, but will fall back to the version in public/javascripts/jquery.min.js if you're on an airplane or something
+  - _hashgrid.js_   Type 'g' to see a grid overlay for CSS debugging in @development@ environment ('g+h' holds it; see hashgrid.js for more).
+  - _application_   Put your javascript here.
+
+h3. /vendor
+
+Static copies of gems, created with @config/bootstrap.rb@. Do not include this directory in your git repo.
+
+h3. Components
+
+* *remote api*:
+  - "Faraday":https://github.com/technoweenie/faraday
+  - "yajl/json_gem":https://github.com/brianmario/yajl-ruby 
+* *templating*: Uses the generic @tilt@ templating language, along with
+  - "RedCloth":https://github.com/jgarber/redcloth.git for textile
+  - "erubis":https://github.com/genki/erubis for ERB templating
+  - "haml":https://github.com/nex3/haml for HAML
+* *stylesheets*: Uses "compass":https://github.com/chriseppstein/compass along with
+  - the "compass 960.gs plugin":https://github.com/chriseppstein/compass-960-plugin
+  - "HTML5 Boilerplate":https://github.com/sporkd/compass-html5-boilerplate compass version
+* *utils*:
+  - "gorillib":https://github.com/infochimps/gorillib, a restrained lightweight subset of active_support. To use extlib or active_support, modify @lib/app_main.rb@.
+  - "configliere":https://github.com/infochimps/configliere, for configuration. 

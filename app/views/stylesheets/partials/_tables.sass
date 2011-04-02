@@ -1,0 +1,40 @@
+// Tables
+
+table
+  text-align:           	left
+  th, td
+    text-align:           	left
+  th
+    font-weight:        	bold
+  th, td
+    min-width:                  ($ninesixty-grid-width / $ninesixty-columns) - $ninesixty-gutter-width
+    padding:            	4px 0 4px $ninesixty-gutter-width
+  th:first-child, td:first-child
+    padding-left:               0
+  tbody
+    tr:hover
+      background-color: 	#e8f0ff
+
+table.full      
+  width:                        $ninesixty-grid-width
+
+table.horizontal
+  th
+    border-bottom:      	2px solid #6678b1
+  th, td
+    min-width:                  (2 * $ninesixty-grid-width / $ninesixty-columns) - $ninesixty-gutter-width
+        
+table.vertical
+  margin:               	16px 0
+  th
+    width:                      (5 * $ninesixty-grid-width / $ninesixty-columns) - (2* $ninesixty-gutter-width)
+    padding:            	4px ($ninesixty-gutter-width / 2) 3px ($ninesixty-gutter-width / 2)
+    border-bottom:      	1px solid #51ded8
+
+  td
+    padding:            	4px 0 3px $ninesixty-gutter-width
+    border-bottom:      	1px solid #f1eee8
+  th:first-child
+    white-space:        	nowrap
+  tr:last-child
+    border:             	none

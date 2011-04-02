@@ -1,0 +1,4 @@
+#flash
+  - %w[alert notice success].select{|k| flash.has?(k) }.each do |key|
+    %div{ :title => key.to_s.humanize, :class => key }
+      %p= flash[key]

@@ -1,0 +1,18 @@
+defaults: &defaults
+  :app_name:            Generic App
+  :logging:             false
+
+  :session_secret:      nowisthetimeforallgoodmentocometotheaidoftheirbieber
+
+  :google_api_key:      
+
+production:
+  <<: *defaults
+  
+development:
+  <<: *defaults
+  :logging:             true
+  
+staging:
+  <<: *defaults  
+  :logging:             true

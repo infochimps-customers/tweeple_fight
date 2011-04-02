@@ -1,0 +1,201 @@
+@import compass/css3
+
+//-----------------------------------
+// Basic Styles
+//-----------------------------------
+
+h1, h2, h3, h4, h5, h6
+  font-weight:          	normal
+
+h1
+  +font-size(24px)
+  padding:
+    top:                        14px
+    bottom:                     5px
+
+h2
+  +font-size(20px)
+  padding:
+    top:                        20px
+    bottom:                     4px
+
+h3
+  +font-size(18px)
+  padding:
+    top:                        6px
+    bottom:                     4px
+
+h4
+  +font-size(15px)
+  padding:
+    top:                        4px
+    bottom:                     2px
+
+strong, th
+  font-weight:            	bold
+
+small, .small
+  // Use font-size mixin to convert to percentage for YUI
+  // http://developer.yahoo.com/yui/3/cssfonts/#fontsize
+  // approx 85% when base-font-size eq 13px
+  +font-size(11px)
+
+.quiet
+  color:                        #888
+  font-style:                   italic
+.ghost
+  color:                        #bbb
+  font-style:                   italic
+
+// Add the 'required' attribute on inputs if you want to use these
+// input:valid, textarea:valid
+
+input:invalid, textarea:invalid
+  +border-radius(1px)
+  +box-shadow(red, 0, 0, 5px, 0)
+
+.no-boxshadow input:invalid,
+.no-boxshadow textarea:invalid
+  background-color:       	#f0dddd
+
+//-----------------------------------
+// HTML5 Boilerplate + http://www.1kbgrid.com/ Grid Layout
+//-----------------------------------
+
+body
+  background-color:       	white
+
+#container
+  +grids
+  +grid-prefixes
+  +grid-suffixes
+  +grid-children
+  +grid-movements
+  +grid-tds
+  #main, #flash, .box
+    +clearfix
+    +grid-container
+
+  #header
+    background-color:       	#cdd9e2
+    border-bottom:          	1px solid #4f708b
+    color:                  	#444
+    padding:                	8px 0 4px 0
+              
+  #header .sitelink
+    +grid(17)
+    +alpha
+    img.logo
+      float:                    left
+      margin-right:             16px
+    h1
+      float:                    left
+      +font-size(32px)
+    a
+      text-decoration:          none
+
+  #header .menu
+    +grid(7)
+    +omega
+    li.hello
+      +grid(4)
+      
+  #nav
+    .menu
+      +grid(19)
+      +alpha
+    .search
+      +grid(5)
+      +omega
+
+  #nav .menu, #header .menu
+    li
+      +grid(2)
+    li a
+      display:                  inline-block
+      padding:          	2px 5px 4px 5px
+    li:first-child, li:first-child
+      +alpha
+    li:last-child 
+      +omega
+
+  #main
+    .section
+      +grid(24)
+    .left_column
+      +alpha
+      +grid(15)
+    .right_column
+      +grid(9)
+      +omega
+
+  footer
+    .credits
+      +grid(18)
+    .copyright
+      +grid(6)
+        
+
+ul, ol
+  li
+    margin-bottom:              2px
+  
+#nav
+  background-color:       	#456989
+  border-top:             	1px solid #87abc8
+  border-bottom:          	1px solid #e0e8f0
+  +linear-gradient(color-stops(#7599b9, #456989))
+  color:                  	#fff
+  padding:                	4px 0
+  margin-bottom:                4px
+  .search
+    text-align:           	right
+    p
+      padding-top:      	2px
+      padding-bottom:   	4px
+  .menu
+    a
+      color:                    white
+      &:hover
+        background-color:       #456989 + #222
+      
+.menu
+  ul, li
+    list-style:                 none
+    list-style-image:           none
+  a
+    text-decoration:            none
+
+#main
+  background-color:       	white
+  color:                  	#444
+  // border-top:             	1px solid #c0d0e0
+  padding:                	15px 0
+  min-height:             	700px
+
+  ul
+    :margin
+      :top                      8px
+      :bottom                   8px
+
+footer
+  border-top:             	1px solid #b2b9bf
+  border-bottom:          	1px solid #c2c9cf
+  background-color:       	#d0d9e0
+  color:                  	#333
+  padding:                	20px 0
+  .copyright, .credits
+    +font-size(10px)
+
+.spacer
+  margin:                       3em 0
+
+.right
+  float:                        right
+.clear
+  clear:                        both
+  +clearfix
+.float_left
+  float:                        left
+.float_right
+  float:                        right

@@ -1,0 +1,34 @@
+-# Grab Google CDN's jQuery if google_api_key is given in config/main.yaml
+- if Settings.google_api_key.present?
+  %script{ :src => "http://www.google.com/jsapi?key=#{Settings.google_api_key}", :type => "text/javascript" }/
+  :javascript
+    google.load("jquery", "1.4.4");
+- else
+  %script{ :src => "http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js", :type => "text/javascript" }/
+-# fall back to local jQuery if necessary
+:javascript
+  !window.jQuery && document.write(unescape('%3Cscript src="/javascripts/jquery.min.js"%3E%3C/script%3E'))
+
+-# Fix any <img> or .png_bg bg-images. Also, please read goo.gl/mZiyb
+/[if lt IE 7 ]
+  :javascript
+    //DD_belatedPNG.fix('img, .png_bg');
+
+- # Your app javascripts
+- %w[plugins application].each do |js_lib|  
+  %script{ :src => "/javascripts/#{js_lib}.js", :type => "text/javascript" }
+- if Main.development?
+  %script{ :src => "/javascripts/hashgrid.js",  :type => "text/javascript" }
+
+-# asynchronous google analytics: mathiasbynens.be/notes/async-analytics-snippet
+-# Looks for google_account_id first in ENV['GOOGLE_ACCOUNT_ID'] then in config/google.yml
+- if Settings.google_account_id.present?
+  :javascript
+    var _gaq = [['_setAccount', '#{google_account_id}'], ['_trackPageview']];
+    (function(d, t) {
+      var g = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      g.async = true;
+      g.src = ('https:' == location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      s.parentNode.insertBefore(g, s);
+    })(document, 'script');
