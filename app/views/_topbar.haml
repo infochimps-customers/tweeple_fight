@@ -5,30 +5,17 @@
       %h1
         - link_to Settings.app_name, '/'
 
-    %ul.menu
-      %li.hello
-        -  link_to 'Hello, Bob', '/me'
-      %li.signup
-        - link_to 'logout',  '/logout'
-    -#   - if user_signed_in?
-    -#     %li.hello=  link_to "Hello, #{current_user.titleize}", edit_user_registration_path
-    -#     %li.signup= link_to 'logout',  destroy_user_session_path
-    -#   - else
-    -#     %li.grid_3.alpha &nbsp;
-    -#     %li.signup= link_to 'signup', new_user_registration_path
-    -#     %li.signup= link_to 'login',  new_user_session_path
-
-%nav#nav
-  .box
-    %ul.menu
-      %li.item
-        - link_to 'home',  '/'
-      %li.item
-        - link_to 'debug', '/debug'
-      %li.item
-        - link_to 'yer mom', '/debug'
-      %li.item
-        - link_to 'debug', '/debug'
-    %form.search
-      - text_field '', :q
+-# %nav#nav
+-#   .box
+-#     %ul.menu
+-#       %li.item
+-#         - link_to 'home',  '/'
+-#       %li.item
+-#         - link_to 'debug', '/debug'
+-#       %li.item
+-#         - link_to 'yer mom', '/debug'
+-#       %li.item
+-#         - link_to 'debug', '/debug'
+-#     %form.search
+-#       - text_field '', :q
 

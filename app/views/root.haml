@@ -1,13 +1,16 @@
-%h1 Hey there chimpy!
+%h1 Which more popular is! Twitter judging! Fight!
 
-%p
-  Here's a demo app! 
+.section
+  - form_tag '/', :method => :get do
+    %fieldset
+      %legend Tweeple Fight
+      - labeled_field @fight, :topic_1
+      - labeled_field @fight, :topic_2
+
+      .buttons
+        - submit_button 'Fight!', :class => 'positive'
+
 
 %hr/
 
-!= textile :README
-
 != partial :dump
-
-%hr{ :style => 'height:100px' }/
-!= partial :demo

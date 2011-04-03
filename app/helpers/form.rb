@@ -60,7 +60,7 @@ class Main
     def text_field(obj, field="", options={})
       content = value_of(obj, field)
       options = options.reverse_merge({ :type => "text", :value => content,
-          :name => form_obj_name(obj, field), :id => form_obj_id(obj, field) })
+          :name => field, :id => form_obj_id(obj, field) })
       haml_tag :input, '', options
     end
 

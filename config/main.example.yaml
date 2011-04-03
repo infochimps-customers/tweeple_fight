@@ -1,5 +1,5 @@
 defaults: &defaults
-  :app_name:            Generic App
+  :app_name:            Tweeple Fight! Go!
   :logging:             false
 
   :session_secret:      nowisthetimeforallgoodmentocometotheaidoftheirbieber

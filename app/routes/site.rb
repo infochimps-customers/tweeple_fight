@@ -1,7 +1,7 @@
 class ::Main < Sinatra::Base
 
   get "/" do
-    @thingy = Thingy.from_hash(params[:thingy]||{})
+    @fight = Fight.from_hash(params)
     @dump = [ params, ]
     haml :root
   end
