@@ -5,24 +5,19 @@
   +clearfix
   +grid-container
   
-.total, .winner
+.total, .winner, .warning
   font-weight:            	bold
   float:                        left
   background-color:             #eee
   text-align:                   center
   margin-top:                   16px
-  padding-left:                 5px
-  padding-right:                5px
   margin-right:                 0
+  padding:                      10px 5px
     
 .total
   +grid(10)
   +font-size(48px)
     
-.winner
-  +font-size(64px)
-  background-color:             #eee
-  
 .total_a
   margin-left:                  40px
   .res_color
@@ -46,15 +41,21 @@
   img
     float:                      left
 
-.middle_float, .winner
+.middle_float, .winner, .warning  
   +grid(14)
   margin-left:                  200px
   margin-top:                   32px
   padding-left:                 5px
-  
+
+.winner
+  +font-size(64px)
+  background-color:             #eee
+
+.warning  
+  +font-size(24px)
+  background-color:             #edd
 
 .description
-  +grid(19)
-  margin-left:                  120px
+  +grid(20)
+  margin-left:                  80px
   margin-top:                   16px
-  

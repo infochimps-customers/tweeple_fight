@@ -18,7 +18,7 @@
     searched 100 million+ twitter profiles to find which is more popular,
     == &ldquo;#{@fight.topic_a}&rdquo; or &ldquo;#{@fight.topic_b}&rdquo;
     
-  - if @fight && @fight.number_hits.present?
+  - if @fight && @fight.success?
     .total.total_a
       %span.res_color= @fight.topic_a
     .total.total_b
@@ -32,10 +32,10 @@
       hits
 
     .total.total_a
-      %span.res_color= @fight.micro_biebers[0].round(0)
+      %span.res_color= @fight.micro_biebers[0]
       µBb
     .total.total_b
-      %span.res_color= @fight.micro_biebers[1].round(0)
+      %span.res_color= @fight.micro_biebers[1]
       µBb
 
     
@@ -49,7 +49,11 @@
     .winner{ :class => (['total_a', 'total_b'][@fight.winner_idx]) }
       %span.res_color= @fight.winner
       won!
+  - else
+    .middle_float.warning
+      yikes! too much fighting, try again in a bit
     
+  
 %br.clear/          
 %p.quiet.middle_float
   µBb (microBiebers) -- Each microBieber corresponds to one-millionth the popularity of Justin Bieber as a user profile term. For example, a 200 µBb term is used 0.0002 as often as 'Bieber' in people's profiles.

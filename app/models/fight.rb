@@ -5,28 +5,31 @@ Fight = Struct.new(:topic_a, :topic_b) do
     new(* hsh.values_at(*members))
   end
 
+  def success?
+    result_a.present? && result_b.present? && result_a['total'].present? && result_b['total'].present?
+  end
+
   def result_a
     @result_a ||= infochimps_request 'social/network/tw/search/people_search', :q => topic_a
   end
-  
   def result_b
     @result_b ||= infochimps_request 'social/network/tw/search/people_search', :q => topic_b
   end
 
   def winner
-    (number_hits[0] > number_hits[1]) ? topic_a : topic_b
+    [topic_a, topic_b][winner_idx]
   end
   def winner_idx
-    (number_hits[0] > number_hits[1]) ? 0 : 1
+    (number_hits[0].to_i >= number_hits[1].to_i) ? 0 : 1
   end
 
   def number_hits
     # [10_0, 1970710 ] 
-    [result_a['total'], result_b['total']]
+    [ result_a['total'], result_b['total'] ]
   end
 
   def micro_biebers
-    number_hits.map{|hit| 1_000_000.0 * hit.to_f / BIEBER_UNIT }
+    number_hits.map{|hit| hit.is_a?(String) ? hit : (1_000_000.0 * hit.to_f / BIEBER_UNIT).round }
   end
 
   def bieberosity
@@ -41,7 +44,7 @@ protected
       builder.request   :url_encoded
       builder.request   :json
       builder.response  :logger
-      builder.adapter   :net_http
+      builder.adapter   :patron
     end
   end
 
