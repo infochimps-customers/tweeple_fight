@@ -6,7 +6,13 @@ Fight = Struct.new(:topic_a, :topic_b) do
   end
 
   def success?
-    result_a.present? && result_b.present? && result_a['total'].present? && result_b['total'].present?
+    topic_a.present? && topic_b.present? &&
+      result_a.present? && result_b.present? &&
+      result_a['total'].present? && result_b['total'].present?
+  end
+
+  def empty?
+    topic_a.blank? && topic_b.blank?
   end
 
   def result_a
