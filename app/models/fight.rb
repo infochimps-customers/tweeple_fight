@@ -1,17 +1,29 @@
-Fight = Struct.new(:topic_a, :topic_b, :result_a, :result_b) do
+Fight = Struct.new(:topic_a, :topic_b) do
+  BIEBER_UNIT     = 197071
 
   def self.from_hash hsh
     new(* hsh.values_at(*members))
   end
 
-  def fetch!
-    # self.result_a = infochimps_request 'social/network/tw/search/people_search', :q => topic_a
-    # self.result_b = infochimps_request 'social/network/tw/search/people_search', :q => topic_b
+  def result_a
+    @result_a ||= infochimps_request 'social/network/tw/search/people_search', :q => topic_a
+  end
+  
+  def result_b
+    @result_b ||= infochimps_request 'social/network/tw/search/people_search', :q => topic_b
   end
 
   def number_hits
-    # [result_a['total'], result_b['total']]
-    [9, 197071]
+    [result_a['total'], result_b['total']]
+    # [10_0, 1970710 ] # 0
+  end
+
+  def micro_biebers
+    number_hits.map{|hit| 1_000_000.0 * hit.to_f / BIEBER_UNIT }
+  end
+
+  def bieberosity
+    number_hits.map{|bb| 100 * Math.log10(bb) / Math.log10(BIEBER_UNIT) rescue -1 }
   end
 
 
@@ -30,7 +42,8 @@ protected
     params = params.merge :_apikey => Settings.infochimps_apikey
     p params
     resp = conn.get do |req|
-      req.url path
+      req.url     path
+      req[:timeout] = 0.5
       params.each{|k,v| req.params[k] = v }
     end
     begin
