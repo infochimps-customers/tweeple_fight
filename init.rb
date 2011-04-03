@@ -17,6 +17,7 @@ require 'app_api_client'
 # Include middleware
 Main.class_eval do
   set :app_file, __FILE__
+  set :run,      Proc.new{ $0 == app_file }
   use Rack::Heartbeat
 end
 

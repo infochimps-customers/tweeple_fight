@@ -24,4 +24,11 @@ gem 'hassle',             :git => 'git://github.com/koppen/hassle.git'
 # API client
 gem 'yajl-ruby',          '~>  0.8.2'
 gem 'faraday',            '~>  0.6.0'
-gem 'patron',             '~>  0.4.11'
+
+# you can use multiple adapters; see lib/app_api_client.rb for details
+
+gem 'typhoeus',           '~>  0.2.4'
+
+# gem 'em-synchrony',     '~>  0.2.0'
+# gem 'async-rack',       '~>  0.9.1'
+# gem 'rack-fiber_pool',  '~>  0.5.1'

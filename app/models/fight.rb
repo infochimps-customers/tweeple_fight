@@ -44,7 +44,7 @@ protected
       builder.request   :url_encoded
       builder.request   :json
       builder.response  :logger
-      builder.adapter   :patron
+      builder.adapter   Main::FARADAY_ADAPTER
     end
   end
 
@@ -57,7 +57,7 @@ protected
       params.each{|k,v| req.params[k] = v }
     end
     begin
-      results = JSON.parse(resp.body)
+      results = JSON.parse(resp.body) || {}
     rescue
       results = {}
     end

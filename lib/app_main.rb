@@ -35,7 +35,6 @@ class Main < Sinatra::Base
 
   def self.staging?()  environment == :staging  end
   def self.heroku?()   !!ENV['HEROKU'] ; end
-  set :run,              Proc.new{ $0 == app_file }
   set :root,             Main.root_path
   set :views,            Main.root_path("app", "views")
   set :dump_errors,      Proc.new{ not (development? || test?) }
