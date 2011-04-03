@@ -13,9 +13,16 @@ Fight = Struct.new(:topic_a, :topic_b) do
     @result_b ||= infochimps_request 'social/network/tw/search/people_search', :q => topic_b
   end
 
+  def winner
+    (number_hits[0] > number_hits[1]) ? topic_a : topic_b
+  end
+  def winner_idx
+    (number_hits[0] > number_hits[1]) ? 0 : 1
+  end
+
   def number_hits
-    # [10_0, 1970710 ] # 0
-    [result_a['total'], result_b['total']]
+    [10_0, 1970710 ] # 0
+    # [result_a['total'], result_b['total']]
   end
 
   def micro_biebers

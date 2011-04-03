@@ -13,6 +13,11 @@
 %hr/
 
 .results
+  %p.description.quiet
+    Using the <a href="http://infochimps.com/apis">Infochimps API</a>, we
+    searched 100 million+ twitter profiles to find which is more popular,
+    == &ldquo;#{@fight.topic_a}&rdquo; or &ldquo;#{@fight.topic_b}&rdquo;
+    
   - if @fight && @fight.number_hits.present?
     .total.total_a
       %span.res_color= @fight.topic_a
@@ -41,8 +46,12 @@
       .meter{ :style => "width:#{ 400 * [@fight.bieberosity[1]/100, 0].max }px" }
         %img{ :src => '/images/bieber-440.png', :alt => "#{@fight.bieberosity[1].round(1)} bieberosity", :title => "#{@fight.bieberosity[1].round(1)} bieberosity" }
 
+    .winner{ :class => (['total_a', 'total_b'][@fight.winner_idx]) }
+      %span.res_color= @fight.winner
+      won!
+    
 %br.clear/          
-%p.quiet{ :style => 'margin-left:205px; width:550px; margin-top: 32px; background-color: #eee' }
+%p.quiet.middle_float
   µBb (microBiebers) -- Each microBieber corresponds to one-millionth the popularity of Justin Bieber as a user profile term. For example, a 200 µBb term is used 0.0002 as often as 'Bieber' in people's profiles.
 
 
