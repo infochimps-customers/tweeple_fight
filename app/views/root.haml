@@ -33,18 +33,17 @@
       %span.res_color= @fight.micro_biebers[1].round(0)
       µBb
 
-    .total.total_a
-      %span.res_color= @fight.bieberosity[0].round(1)
-      dBb
-    .total.total_b
-      %span.res_color= @fight.bieberosity[1].round(1)
-      dBb
-
+    
     .total.total_a.bieber_meter
       .meter{ :style => "width:#{ 400 * [@fight.bieberosity[0]/100, 0].max }px" }
         %img{ :src => '/images/bieber-440.png', :alt => "#{@fight.bieberosity[0].round(1)} bieberosity", :title => "#{@fight.bieberosity[0].round(1)} bieberosity" }
     .total.total_b.bieber_meter
       .meter{ :style => "width:#{ 400 * [@fight.bieberosity[1]/100, 0].max }px" }
         %img{ :src => '/images/bieber-440.png', :alt => "#{@fight.bieberosity[1].round(1)} bieberosity", :title => "#{@fight.bieberosity[1].round(1)} bieberosity" }
+
+%br.clear/          
+%p.quiet{ :style => 'margin-left:205px; width:550px; margin-top: 32px; background-color: #eee' }
+  µBb (microBiebers) -- Each microBieber corresponds to one-millionth the popularity of Justin Bieber as a user profile term. For example, a 200 µBb term is used 0.0002 as often as 'Bieber' in people's profiles.
+
 
 -# != partial :dump

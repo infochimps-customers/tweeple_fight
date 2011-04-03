@@ -14,8 +14,8 @@ Fight = Struct.new(:topic_a, :topic_b) do
   end
 
   def number_hits
-    [result_a['total'], result_b['total']]
     # [10_0, 1970710 ] # 0
+    [result_a['total'], result_b['total']]
   end
 
   def micro_biebers
