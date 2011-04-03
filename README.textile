@@ -4,4 +4,4 @@ A sample app to show how simple and awesome the Infochimps API is, crafted with 
 
 Enter two topics! Hit button! See which has more twitter users who mention in their bio!
 
-
+Uses ruby 1.9
