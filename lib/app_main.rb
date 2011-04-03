@@ -33,17 +33,17 @@ class Main < Sinatra::Base
     File.join(::ROOT_DIR, *args)
   end
 
-  def self.staging?;  environment == :staging  end
-  set :dump_errors,      Proc.new{ not (development? || test?) }
-  set :logging,          true
-  set :methodoverride,   true
-  set :raise_errors,     Proc.new{ test? }
-  set :root,             Main.root_path
+  def self.staging?()  environment == :staging  end
+  def self.heroku?()   !!ENV['HEROKU'] ; end
   set :run,              Proc.new{ $0 == app_file }
-  set :show_exceptions,  Proc.new{ development? }
+  set :root,             Main.root_path
   set :views,            Main.root_path("app", "views")
-  set :static,           Proc.new{ development? || test? }
+  set :dump_errors,      Proc.new{ not (development? || test?) }
+  set :raise_errors,     Proc.new{ test? }
+  set :show_exceptions,  Proc.new{ development? }
+  set :static,           Proc.new{ development? || test? || heroku? }
   set :clean_trace,      Proc.new{ development? || test? }
+  set :logging,          true
 
   require 'rack-flash'
   enable :sessions
@@ -60,7 +60,7 @@ class Main < Sinatra::Base
       haml(template, {:layout => false}, locals)
     end
 
-    %w[environment production? development? test? staging? ].each do |meth|
+    %w[environment production? development? test? staging? heroku? ].each do |meth|
       define_method(meth) { |*a| self.class.send(meth, *a) }
     end
   end
