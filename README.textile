@@ -1,0 +1,7 @@
+h1. Tweeple Fight! Which more popular is? Twitter judging! Fight!
+
+A sample app to show how simple and awesome the Infochimps API is, crafted with love by the infochimps crew.
+
+Enter two topics! Hit button! See which has more twitter users who mention in their bio!
+
+
