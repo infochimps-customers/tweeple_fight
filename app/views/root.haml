@@ -4,13 +4,19 @@
   - form_tag '/', :method => :get do
     %fieldset
       %legend Tweeple Fight
-      - labeled_field @fight, :topic_1
-      - labeled_field @fight, :topic_2
+      - labeled_field @fight, :topic_a
+      - labeled_field @fight, :topic_b
 
       .buttons
         - submit_button 'Fight!', :class => 'positive'
 
-
 %hr/
+
+.results
+  - if @fight && @fight.number_hits.present?
+    .total.total_a
+      = @fight.number_hits[0]
+    .total.total_b
+      = @fight.number_hits[1]
 
 != partial :dump
