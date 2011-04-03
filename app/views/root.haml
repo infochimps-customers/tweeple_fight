@@ -41,10 +41,10 @@
       dBb
 
     .total.total_a.bieber_meter
-      .meter{ :style => "width:#{ 400 * @fight.bieberosity[0]/100 }px" }
+      .meter{ :style => "width:#{ 400 * [@fight.bieberosity[0]/100, 0].max }px" }
         %img{ :src => '/images/bieber-440.png', :alt => "#{@fight.bieberosity[0].round(1)} bieberosity", :title => "#{@fight.bieberosity[0].round(1)} bieberosity" }
     .total.total_b.bieber_meter
-      .meter{ :style => "width:#{ 400 * @fight.bieberosity[1]/100 }px" }
+      .meter{ :style => "width:#{ 400 * [@fight.bieberosity[1]/100, 0].max }px" }
         %img{ :src => '/images/bieber-440.png', :alt => "#{@fight.bieberosity[1].round(1)} bieberosity", :title => "#{@fight.bieberosity[1].round(1)} bieberosity" }
 
 -# != partial :dump
