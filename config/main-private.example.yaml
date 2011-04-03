@@ -6,7 +6,8 @@
 defaults: &defaults
   :infochimps_apikey:   YOUR KEY HERE
   :session_secret:      nowisthetimeforallgoodmentocometotheaidoftheirbieber
-  :google_api_key:      
+  :google_apikey:       
+  :twitter_apikey:      
 
 production:
   <<: *defaults

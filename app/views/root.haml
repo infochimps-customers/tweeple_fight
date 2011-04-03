@@ -49,14 +49,31 @@
     .winner{ :class => (['total_a', 'total_b'][@fight.winner_idx]) }
       %span.res_color= @fight.winner
       won!
+
+    .users
+      #users_a
+        %p.clear== #{['Thanks', 'No thanks'][@fight.winner_idx]} to users like:
+        - @fight.users[0].each do |user|
+          -# twitter_profile_image(user)
+          == @#{user['screen_name']}
+      #users_b
+        %p.clear== #{['And no thanks', 'But thanks'][@fight.winner_idx]} to users like:
+        - @fight.users[1].each do |user|
+          -# twitter_profile_image(user)
+          == @#{user['screen_name']}
+      
   - else
     .middle_float.warning
       yikes! too much fighting, try again in a bit
     
-  
-%br.clear/          
-%p.quiet.middle_float
-  µBb (microBiebers) -- Each microBieber corresponds to one-millionth the popularity of Justin Bieber as a user profile term. For example, a 200 µBb term is used 0.0002 as often as 'Bieber' in people's profiles.
+
+      
+%p.quiet.middle_float#micro_biebers
+  µBb (microBiebers) &mdash; Each microBieber corresponds to one-millionth the popularity of Justin Bieber as a user profile term. For example, a 200 µBb term is used 0.0002 as often as 'Bieber' in people's profiles.
 
 
--# != partial :dump
+- if Main.development?
+  != partial :dump
+
+.foo{ :style => 'height:1000px' }
+  hi

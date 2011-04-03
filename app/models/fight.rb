@@ -10,9 +10,11 @@ Fight = Struct.new(:topic_a, :topic_b) do
   end
 
   def result_a
+    # @result_a ||= { 'total' => 100 }
     @result_a ||= infochimps_request 'social/network/tw/search/people_search', :q => topic_a
   end
   def result_b
+    # @result_b ||= { 'total' => 100_00 }
     @result_b ||= infochimps_request 'social/network/tw/search/people_search', :q => topic_b
   end
 
@@ -23,8 +25,11 @@ Fight = Struct.new(:topic_a, :topic_b) do
     (number_hits[0].to_i >= number_hits[1].to_i) ? 0 : 1
   end
 
+  #
+  # Result counts
+  # 
+
   def number_hits
-    # [10_0, 1970710 ] 
     [ result_a['total'], result_b['total'] ]
   end
 
@@ -36,6 +41,14 @@ Fight = Struct.new(:topic_a, :topic_b) do
     number_hits.map{|bb| 100 * Math.log10(bb) / Math.log10(BIEBER_UNIT) rescue -1 }
   end
 
+  #
+  # Result users
+  #
+  def users
+    [ (result_a['results'] || []).select{|u| u.has_key?('name') }.sort_by{|u| u['id'] }[0..26],
+      (result_b['results'] || []).select{|u| u.has_key?('name') }.sort_by{|u| u['id'] }[0..26],
+    ]
+  end
 
 protected
   

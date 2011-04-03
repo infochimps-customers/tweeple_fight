@@ -1,10 +1,10 @@
--# Grab Google CDN's jQuery if google_api_key is given in config/main.yaml
-- if Settings.google_api_key.present?
-  %script{ :src => "http://www.google.com/jsapi?key=#{Settings.google_api_key}", :type => "text/javascript" }/
+-# Grab Google CDN's jQuery if google_apikey is given in config/main.yaml
+- if Settings.google_apikey.present?
+  %script{ :src => "http://www.google.com/jsapi?key=#{Settings.google_apikey}", :type => "text/javascript" }
   :javascript
     google.load("jquery", "1.4.4");
 - else
-  %script{ :src => "http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js", :type => "text/javascript" }/
+  %script{ :src => "http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js", :type => "text/javascript" }
 -# fall back to local jQuery if necessary
 :javascript
   !window.jQuery && document.write(unescape('%3Cscript src="/javascripts/jquery.min.js"%3E%3C/script%3E'))
@@ -15,6 +15,9 @@
     //DD_belatedPNG.fix('img, .png_bg');
 
 - # Your app javascripts
+
+%script{ :src => "http://platform.twitter.com/anywhere.js?id=#{Settings.twitter_apikey}&v=1", :type => "text/javascript" }
+
 - %w[plugins application].each do |js_lib|  
   %script{ :src => "/javascripts/#{js_lib}.js", :type => "text/javascript" }
 - if Main.development?
@@ -32,3 +35,4 @@
       g.src = ('https:' == location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
       s.parentNode.insertBefore(g, s);
     })(document, 'script');
+
