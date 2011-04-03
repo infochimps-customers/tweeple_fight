@@ -47,12 +47,4 @@
       .meter{ :style => "width:#{ 400 * @fight.bieberosity[1]/100 }px" }
         %img{ :src => '/images/bieber-440.png', :alt => "#{@fight.bieberosity[1].round(1)} bieberosity", :title => "#{@fight.bieberosity[1].round(1)} bieberosity" }
 
-%br.clear/
-%section
-  Try:
-  %ul
-    - [ ['boxers', 'briefs'], ['austin', 'san francisco'], ['obama', 'palin'] ].each do |topic_a, topic_b|
-      %li
-        - link_to_fight topic_a, topic_b
-
 != partial :dump

@@ -5,17 +5,11 @@
       %h1
         - link_to Settings.app_name, '/'
 
--# %nav#nav
--#   .box
--#     %ul.menu
--#       %li.item
--#         - link_to 'home',  '/'
--#       %li.item
--#         - link_to 'debug', '/debug'
--#       %li.item
--#         - link_to 'yer mom', '/debug'
--#       %li.item
--#         - link_to 'debug', '/debug'
--#     %form.search
--#       - text_field '', :q
+%nav#nav
+  .box
+    %ul.menu
+      %li{ :style => 'width:30px; color: #ccd; padding: 2px 0px 4px 5px' } Try:
+      - [ ['boxers', 'briefs'], ['austin', 'dallas'], ['obama', 'palin'], ['pirate', 'ninja'], ['rules', 'sucks'], ['twitter', 'facebook'] ].each do |topic_a, topic_b|
+        %li.item
+          - link_to_fight topic_a, topic_b
 
