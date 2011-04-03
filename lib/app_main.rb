@@ -1,4 +1,3 @@
-
 require 'gorillib'
 require 'gorillib/logger/log'
 require 'gorillib/hash/keys'
@@ -23,7 +22,10 @@ Settings.define :logging,  :description => "Should Sinatra output a log line as 
 Settings.define :app_name, :description => "Name for this app"
 Settings.define :google_api_key,    :description => "Google API key for fast jQuery retrieval", :env_var => 'GOOGLE_API_KEY'
 Settings.define :google_account_id, :description => "Google account ID for google analytics",   :env_var => 'GOOGLE_ACCOUNT_ID'
-Settings.read("#{::ROOT_DIR}/config/main.yaml", :env => ENV['RACK_ENV']).resolve!
+Settings.define :infochimps_apikey, :description => "API key for infochimps.com. See http://infochimps.com/apis if you're ready for the awesomeness", :env_var => 'INFOCHIMPS_APIKEY'
+Settings.read("#{::ROOT_DIR}/config/main.yaml",         :env => ENV['RACK_ENV'])
+Settings.read("#{::ROOT_DIR}/config/main-private.yaml", :env => ENV['RACK_ENV'])
+Settings.resolve!
 
 
 class Main < Sinatra::Base

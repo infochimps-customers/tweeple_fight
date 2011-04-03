@@ -1,6 +1,6 @@
 %h1 Debug View
 
-- if not Main.development?
+- if Main.development?
   %h3 Sinatra Setup
   %table.full.vertical
     - grid_row_for_hash "ENV['RACK_ENV']", ENV['RACK_ENV']
@@ -19,4 +19,4 @@
   %table.full.vertical
     - grid_for_hash env.to_hash.sort
 - else
-  Only visible in development environment
+  == Only visible in development environment: in #{Main.environment}

@@ -36,7 +36,7 @@ rdoc
 doc
 pkg
 .yardoc
-*private*
+*private.yaml
 .bundle
 db/*.sqlite3
 log/*.log*
