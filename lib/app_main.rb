@@ -10,9 +10,9 @@ require "sinatra/base"
 require 'tilt'
 require 'RedCloth'
 require 'haml'
-require 'erubis'
-Tilt.register :erb,  Tilt[:erubis]
 Tilt.register :haml, Tilt[:haml]
+# require 'erubis'
+# Tilt.register :erb,  Tilt[:erubis]
 
 
 #
