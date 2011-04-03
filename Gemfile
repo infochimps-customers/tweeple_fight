@@ -8,7 +8,7 @@ gem 'sinatra',            '~> 1.1.2'
 
 # Configuration
 gem 'gorillib',           '~> 0.0.3'
-gem 'configliere',        '~> 0.3.3'
+gem 'configliere',        '~> 0.3.4'
 
 # Template rendering
 gem 'haml',               '~> 3.0.25'
