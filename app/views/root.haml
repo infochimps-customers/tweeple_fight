@@ -2,13 +2,15 @@
 
 .section
   - form_tag '/', :method => :get do
-    %fieldset
+    %fieldset.fighters
       %legend Tweeple Fight
-      - labeled_field @fight, :topic_a
-      - labeled_field @fight, :topic_b
-
-      .buttons
-        - submit_button 'Fight!', :class => 'positive'
+      .float_left 
+        - labeled_field @fight, :topic_a
+      .float_left{ :style => 'margin-left: 90px'}
+        .buttons
+          - submit_button 'Fight!', :class => 'positive'
+      .right
+        - labeled_field @fight, :topic_b
 
 %hr/
 
@@ -23,6 +25,14 @@
       %span.res_color= @fight.topic_a
     .total.total_b
       %span.res_color= @fight.topic_b
+
+    .total.total_a.bieber_meter
+      .meter{ :style => "width:#{ 400 * [@fight.bieberosity[0]/100, 0].max }px" }
+        %img{ :src => '/images/bieber-440.png', :alt => "#{@fight.bieberosity[0].round(1)} bieberosity", :title => "#{@fight.bieberosity[0].round(1)} bieberosity" }
+    .total.total_b.bieber_meter
+      .meter{ :style => "width:#{ 400 * [@fight.bieberosity[1]/100, 0].max }px" }
+        %img{ :src => '/images/bieber-440.png', :alt => "#{@fight.bieberosity[1].round(1)} bieberosity", :title => "#{@fight.bieberosity[1].round(1)} bieberosity" }
+
     
     .total.total_a
       %span.res_color= @fight.number_hits[0]
@@ -37,14 +47,6 @@
     .total.total_b
       %span.res_color= @fight.micro_biebers[1]
       µBb
-
-    
-    .total.total_a.bieber_meter
-      .meter{ :style => "width:#{ 400 * [@fight.bieberosity[0]/100, 0].max }px" }
-        %img{ :src => '/images/bieber-440.png', :alt => "#{@fight.bieberosity[0].round(1)} bieberosity", :title => "#{@fight.bieberosity[0].round(1)} bieberosity" }
-    .total.total_b.bieber_meter
-      .meter{ :style => "width:#{ 400 * [@fight.bieberosity[1]/100, 0].max }px" }
-        %img{ :src => '/images/bieber-440.png', :alt => "#{@fight.bieberosity[1].round(1)} bieberosity", :title => "#{@fight.bieberosity[1].round(1)} bieberosity" }
 
     .winner{ :class => (['total_a', 'total_b'][@fight.winner_idx]) }
       %span.res_color= @fight.winner
