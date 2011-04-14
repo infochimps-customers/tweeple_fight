@@ -18,7 +18,7 @@
   %p.description.quiet
     Using the <a href="http://infochimps.com/apis">Infochimps API</a>, we
     searched 100 million+ twitter profiles to find which is more popular,
-    == &ldquo;#{@fight.topic_a}&rdquo; or &ldquo;#{@fight.topic_b}&rdquo;
+    == &ldquo;#{@fight.topic_a || "topic a"}&rdquo; or &ldquo;#{@fight.topic_b || "topic b"}&rdquo;
     
   - if @fight && @fight.success?
     .total.total_a
