@@ -5,12 +5,12 @@
     %fieldset.fighters
       %legend Tweeple Fight
       .float_left 
-        - labeled_field @fight, :topic_a
+        - labeled_field @fight, :topic_a, :tabindex => '10'
       .float_left{ :style => 'margin-left: 90px'}
         .buttons
-          - submit_button 'Fight!', :class => 'positive'
+          - submit_button 'Fight!', :class => 'positive', :tabindex => '20'
       .right
-        - labeled_field @fight, :topic_b
+        - labeled_field @fight, :topic_b, :tabindex => '10'
 
 %hr/
 
