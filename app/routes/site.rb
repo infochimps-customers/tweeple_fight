@@ -4,7 +4,6 @@ class ::Main < Sinatra::Base
     @fight = Fight.from_hash(params)
     @dump = [ params, @fight.number_hits, @fight, ] # @fight.result_a
     headers['Cache-Control'] = ''
-    headers['X-YYYY'] = 'graph'
     haml :root
   end
 
