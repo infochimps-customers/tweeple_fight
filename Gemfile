@@ -29,6 +29,8 @@ gem 'faraday',            '~>  0.6.0'
 
 gem 'typhoeus',           '~>  0.2.4'
 
+gem 'rack-contrib'
+
 # gem 'em-synchrony',     '~>  0.2.0'
 # gem 'async-rack',       '~>  0.9.1'
 # gem 'rack-fiber_pool',  '~>  0.5.1'
