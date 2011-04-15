@@ -19,7 +19,7 @@ gem 'RedCloth',           '~> 4.2.7'
 gem 'compass',            '~>  0.10.6'
 gem 'html5-boilerplate',  '~>  0.3.2'
 gem 'compass-960-plugin', '~>  0.10.0'
-gem 'hassle',             :git => 'git://github.com/koppen/hassle.git'
+# gem 'hassle',             :git => 'git://github.com/koppen/hassle.git'
 
 # API client
 gem 'yajl-ruby',          '~>  0.8.2'

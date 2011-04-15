@@ -41,7 +41,7 @@ class Main < Sinatra::Base
   set :dump_errors,      Proc.new{ not (development? || test?) }
   set :raise_errors,     Proc.new{ test? }
   set :show_exceptions,  Proc.new{ development? }
-  set :static,           Proc.new{ development? || test? || heroku? }
+  set :static,           true
   set :clean_trace,      Proc.new{ development? || test? }
   set :logging,          true
 
